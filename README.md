@@ -1,6 +1,6 @@
 # About
 
-*isaac-prng* is a TypeScript (JavaScript) implementation of the [ISAAC](http://www.burtleburtle.net/bob/rand/isaac.html) secure random number generator.
+The [*isaac-prng*](https://www.npmjs.com/package/isaac-prng) package provides a TypeScript (JavaScript) implementation of the [ISAAC](http://www.burtleburtle.net/bob/rand/isaac.html) secure random number generator.
 
 ISAAC is a [CSPRNG](http://en.wikipedia.org/wiki/CSPRNG) designed by [Robert J. Jenkins Jr.](http://burtleburtle.net/bob/) in 1996 and based on RC4. It is designed to be fast and secure.
 
@@ -14,21 +14,40 @@ The implementation was adapted from Bob Jenkin's [Java port](https://burtleburtl
 
 ### NPM
 
-### GitHub Packages
+```
+npm install isaac-prng
+```
 
 ## Import Package
 
-### ES Module
-
-### CommonJS
+```
+import { Isaac } from 'isaac-prng'
+```
 
 ## Use ISAAC
 
+Create an instance of Isaac without a seed.
+
+```
+const isaac = new Isaac()
+```
+
 ### Seed Isaac
+
+If you wish to modify the seed, you can do so by supplying an array of Numbers. Find some random source data to pass in.
+
+```
+const isaac = new Isaac([ 1, 2, 3, 4 ])
+```
 
 ### Generate Signed Integer
 
+Generate the next random number.
 
+```
+const randomNumber = isaac.nextInt()
+console.log(randomNumber)
+```
 
 # Development
 
