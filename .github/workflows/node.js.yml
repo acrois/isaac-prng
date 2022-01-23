@@ -61,7 +61,7 @@ jobs:
         registry-url: 'https://npm.pkg.github.com/'
     - run: npm ci
     # hack: https://github.com/actions/setup-node/issues/73#issuecomment-642457192
-    - run: echo "registry=https://npm.pkg.github.com/@acrois" >> .npmrc
+    #- run: echo "registry=https://npm.pkg.github.com/@acrois" >> .npmrc
     - run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
