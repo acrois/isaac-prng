@@ -115,7 +115,7 @@ export default class Isaac {
         }
 		
 		/* fill in mem[] with messy stuff */
-        for (let i = 0; i < Isaac.SIZE; i += 8) {
+        for (let i = 0; i < Number(Isaac.SIZE); i += 8) {
 			if (seed) {
 				a += this.rsl[i];
 				b += this.rsl[i + 1];
@@ -167,7 +167,7 @@ export default class Isaac {
 
 		/* second pass makes all of seed affect all of mem */
 		if (seed) {
-			for (let i = 0; i < Isaac.SIZE; i += 8) {
+			for (let i = 0; i < Number(Isaac.SIZE); i += 8) {
 				a += this.mem[i];
 				b += this.mem[i + 1];
 				c += this.mem[i + 2];
