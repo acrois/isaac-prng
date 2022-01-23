@@ -28,7 +28,7 @@ export default class Isaac {
 		let i = 0, j = 0;
 		this.b += ++this.c;
 
-		for (i = 0, j = Number(Isaac.SIZE / 2n); i < Isaac.SIZE / 2n;) {
+		for (i = 0, j = Number(Isaac.SIZE / 2n); i < Number(Isaac.SIZE / 2n);) {
 			x = this.mem[i];
 			this.a ^= this.a << 13n;
 			this.a += this.mem[j++];
@@ -54,7 +54,7 @@ export default class Isaac {
 			this.rsl[i++] = this.b = this.mem[Number((y >> Isaac.SIZEL & Isaac.MASK) >> 2n)] + x;
 		}
 
-		for (j = 0; j < Isaac.SIZE / 2n;) {
+		for (j = 0; j < Number(Isaac.SIZE / 2n);) {
 			x = this.mem[i];
 			this.a ^= this.a << 13n;
 			this.a += this.mem[j++];
