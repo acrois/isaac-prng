@@ -1,5 +1,5 @@
 {
-    "name": "isaac-prng",
+    "name": "@acrois/isaac-prng",
     "version": "1.0.1",
     "description": "ISAAC cryptographically-secure psuedorandom number generator (CSPRNG) NPM package written in TypeScript",
     "main": "./lib/cjs/index.js",
