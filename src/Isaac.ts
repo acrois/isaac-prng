@@ -9,9 +9,9 @@ export default class Isaac {
     private static readonly SIZE = 1n << Isaac.SIZEL; // size of result and memory arrays
     private static readonly MASK = Isaac.SIZE - 1n << 2n; // psuedorandom lookup mask
 
+    private rsl: bigint[] = new Array(Number(Isaac.SIZE)); // the results given to the user
+    private mem: bigint[] = new Array(Number(Isaac.SIZE)); // the internal state
     private count: number = 0; // position in rsl[]
-    private rsl: bigint[] = []; // the results given to the user
-    private mem: bigint[] = []; // the internal state
     private a: bigint = 0n; // accumulator
     private b: bigint = 0n; // the last result
     private c: bigint = 0n; // counter, guarantees cycle is at least 2^^40
@@ -83,6 +83,12 @@ export default class Isaac {
 
     private init(seed?: number[]) {
         let a = Isaac.GOLDEN_RATIO, b = a, c = a, d = a, e = a, f = a, g = a, h = a;
+
+		if (seed) {
+			for (let i = 0; i < seed.length; i++) {
+				this.rsl[i] = BigInt(seed[i]);
+			}
+		}
 
         for (let i = 0; i < 4; i++) {
 			a ^= b << 11n;
