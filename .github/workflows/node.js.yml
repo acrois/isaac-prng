@@ -45,24 +45,24 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
-  publish-gpr:
-    needs: build
-    if: startsWith(github.ref, 'refs/tags/')
-    runs-on: ubuntu-latest
-    permissions: 
-      contents: read
-      packages: write 
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js 16.x with GH Packages
-      uses: actions/setup-node@v2
-      with:
-        registry-url: 'https://npm.pkg.github.com/'
-    - run: npm ci
-    # hack: https://github.com/actions/setup-node/issues/73#issuecomment-642457192
-    #- run: echo "registry=https://npm.pkg.github.com/@acrois" >> .npmrc
-    - run: echo "@acrois:registry=https://npm.pkg.github.com/" >> .npmrc
-    - run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#  publish-gpr:
+#    needs: build
+#    if: startsWith(github.ref, 'refs/tags/')
+#    runs-on: ubuntu-latest
+#    permissions: 
+#      contents: read
+#      packages: write 
+#
+#    steps:
+#    - uses: actions/checkout@v2
+#    - name: Use Node.js 16.x with GH Packages
+#      uses: actions/setup-node@v2
+#      with:
+#        registry-url: 'https://npm.pkg.github.com/'
+#    - run: npm ci
+#    # hack: https://github.com/actions/setup-node/issues/73#issuecomment-642457192
+#    #- run: echo "registry=https://npm.pkg.github.com/@acrois" >> .npmrc
+#    - run: echo "@acrois:registry=https://npm.pkg.github.com/" >> .npmrc
+#    - run: npm publish
+#      env:
+#        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
