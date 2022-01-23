@@ -38,6 +38,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Use Node.js 16.x with NPM Registry
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16.x'
+        registry-url: 'https://registry.npmjs.org'
+        cache: 'npm'
+    - run: npm ci
+    - run: npm publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
     - name: Use Node.js 16.x with GH Packages
       uses: actions/setup-node@v2
       with:
@@ -48,12 +58,3 @@ jobs:
     - run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Use Node.js 16.x with NPM Registry
-      uses: actions/setup-node@v2
-      with:
-        node-version: '16.x'
-        registry-url: 'https://registry.npmjs.org/'
-        cache: 'npm'
-    - run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
