@@ -50,7 +50,7 @@ jobs:
     - name: Use Node.js 16.x with GH Packages
       uses: actions/setup-node@v2
       with:
-        registry-url: 'https://npm.pkg.github.com'
+        registry-url: 'https://npm.pkg.github.com/acrois/isaac-prng'
     - run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
